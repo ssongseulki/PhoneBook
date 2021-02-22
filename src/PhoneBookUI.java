@@ -11,20 +11,23 @@ public class PhoneBookUI {
 	
 	public void printMenu()
 	{
-		System.out.println("선택하세요...");
-		System.out.println("1. 데이터 입력");
-		System.out.println("2. 데이터 검색");
-		System.out.println("3. 데이터 삭제");
-		System.out.println("4. 모든 데이터 보기");
+		System.out.println();
+		System.out.println("선택하세요.");
+		System.out.println("1. 연락처 입력");
+		System.out.println("2. 연락처 검색");
+		System.out.println("3. 연락처 삭제");
+		System.out.println("4. 모든 연락처 보기");
 		System.out.println("5. 프로그램 종료");
 		System.out.println("선택 : ");
 	}
 	
 	public void inputMenu()
 	{
-		System.out.println("데이터 입력을 시작합니다.");
+		System.out.println();
+		System.out.println("연락처 입력을 시작합니다.");
 		System.out.println("1. 일반, 2. 대학, 3. 회사");
 		System.out.print("선택 >>");
+		System.out.println();
 	}
 	
 	public void inputPhoneInfo(int menu)
@@ -34,7 +37,8 @@ public class PhoneBookUI {
 		boolean result;
 		PhoneInfo phoneInfo = null;
 		
-		System.out.println("데이터 입력을 시작합니다.");
+		System.out.println();
+		System.out.println("연락처 입력을 시작합니다.");
 		System.out.println("이름 : ");
 		name = sc.nextLine();
 		System.out.println("전화번호 : ");
@@ -57,14 +61,21 @@ public class PhoneBookUI {
 			phoneInfo = new PhoneCompanyInfo(name, phoneNumber, company);
 		}
 		result = pb.insertPhoneInfo(phoneInfo);
-		if(result == false)
-			System.out.println("이미 등록된 데이터 입니다.");
-		else System.out.println("데이터 입력이 완료되었습니다.");
+		if(result == false) {
+			System.out.println();
+			System.out.println("이미 등록된 정보 입니다.");
+		}
+			
+		else {
+			System.out.println();
+			System.out.println("연락처 입력이 완료되었습니다.");			
+		}
 	}
 	
 	public void searchPhoneInfoByName()
 	{
 		String name;
+		System.out.println();
 		System.out.println("검색하시고자 하는 이름을 입력해 주세요.");
 		name = sc.nextLine();
 		System.out.println("사용자 검색을 시작합니다.");
@@ -74,6 +85,7 @@ public class PhoneBookUI {
 	public void deletePhoneInfoByPhoneNumber()
 	{
 		String phoneNumber;
+		System.out.println();
 		System.out.println("삭제하시고자 하는 전화번호를 입력해 주세요.");
 		phoneNumber = sc.nextLine();
 		boolean result = pb.deletePhoneInfoByPhoneNumber(phoneNumber);
@@ -83,12 +95,14 @@ public class PhoneBookUI {
 	
 	public void printAllPhoneInfo()
 	{
-		System.out.println("모든 사용자 정보를 출력합니다.");
+		System.out.println();
+		System.out.println("모든 연락처 정보를 출력합니다.");
 		pb.printAllPhoneInfo();
 	}
 	
 	public void quitProgram()
 	{
+		System.out.println();
 		System.out.println("프로그램을 종료합니다.");
 		pb.quitProgram();
 		sc.close();
